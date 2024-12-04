@@ -1,40 +1,45 @@
-import { fetchImages } from './js/pixabay-api';
-import { createImageMarkup } from './js/render-functions';
-import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
+import { fetchImages } from './pixabay-api';
+import { renderImageCard } from './render-functions';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
 const form = document.querySelector('#search-form');
 const gallery = document.querySelector('.gallery');
-let page = 1;
+const loader = document.querySelector('.loader');
+
 let query = '';
+let page = 1;
 
-const lightbox = new SimpleLightbox('.gallery a');
+const lightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250 });
 
-form.addEventListener('submit', async event => {
-  event.preventDefault();
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  query = e.target.searchQuery.value.trim();
 
-  query = event.currentTarget.elements.searchQuery.value.trim();
   if (!query) {
-    iziToast.warning({ message: 'Please enter a search query!' });
+    iziToast.error({ title: 'Error', message: 'Enter a valid search query' });
     return;
   }
 
   page = 1;
   gallery.innerHTML = '';
+  loader.style.display = 'block';
 
   try {
     const data = await fetchImages(query, page);
+    loader.style.display = 'none';
+
     if (data.hits.length === 0) {
-      iziToast.error({ message: 'No images found. Please try again!' });
+      iziToast.warning({ message: 'No results found. Try another query!' });
       return;
     }
 
-    gallery.innerHTML = createImageMarkup(data.hits);
+    gallery.innerHTML = data.hits.map(renderImageCard).join('');
     lightbox.refresh();
   } catch (error) {
-    iziToast.error({ message: 'Something went wrong. Please try again!' });
-    console.error(error);
+    loader.style.display = 'none';
+    iziToast.error({ title: 'Error', message: 'Failed to fetch images' });
   }
 });
