@@ -70,18 +70,3 @@ window.addEventListener('scroll', async () => {
     }
   }
 });
-try {
-  const data = await fetchImages(query, page);
-  console.log('API Response:', data);
-
-  if (data.hits.length === 0) {
-    iziToast.warning({ message: 'No images found. Try another query!' });
-    return;
-  }
-
-  gallery.innerHTML = data.hits.map(renderImageCard).join('');
-  lightbox.refresh();
-} catch (error) {
-  iziToast.error({ title: 'Error', message: 'Failed to load images.' });
-}
-
