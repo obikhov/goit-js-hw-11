@@ -1,5 +1,5 @@
-import { fetchImages } from './pixabay-api';
-import { renderImageCard, clearGallery } from './render-functions';
+import { fetchImages } from './js/pixabay-api';
+import { renderImageCard, clearGallery } from './js/render-functions';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import iziToast from 'izitoast';
