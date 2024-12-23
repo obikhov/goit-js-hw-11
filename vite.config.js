@@ -37,6 +37,7 @@ export default defineConfig(({ command }) => {
       outDir: '../dist',
       emptyOutDir: true,
     },
+    base: command === 'serve' ? '/' : 'https://github.com/obikhov/goit-js-hw-11', // Замініть "ім'я_репозиторію" на назву вашого репозиторію
     plugins: [
       injectHTML(),
       FullReload(['./src/**/**.html']),
