@@ -4,15 +4,13 @@ import injectHTML from 'vite-plugin-html-inject';
 import FullReload from 'vite-plugin-full-reload';
 import SortCss from 'postcss-sort-media-queries';
 
-// Укажите название репозитория в `base`, если ваш проект размещен в подкаталоге
 export default defineConfig(({ command }) => {
   return {
-    base: '/goit-js-hw-11/', // Замените 'goit-js-hw-11' на имя вашего репозитория
-
+    base: '/goit-js-hw-11/', // Укажите название вашего репозитория на GitHub
     define: {
       [command === 'serve' ? 'global' : '_global']: {},
     },
-    root: 'src',  // Папка с исходным кодом проекта
+    root: 'src',  // root указывает на папку src
     build: {
       sourcemap: true,
       rollupOptions: {
@@ -37,18 +35,18 @@ export default defineConfig(({ command }) => {
           },
         },
       },
-      outDir: '../dist',  // Папка для выходных файлов
-      emptyOutDir: true,  // Очищает папку dist перед сборкой
+      outDir: '../dist',  // Папка, в которую будет собираться проект
+      emptyOutDir: true,
     },
     server: {
-      open: true, // Автоматически откроет браузер при запуске
-      port: 5174, // Порт для локального сервера
+      open: true, // Автоматически открывает браузер при запуске
+      port: 5174, // Укажите порт, на котором будет работать сервер
     },
     plugins: [
       injectHTML(),
       FullReload(['./src/**/*.html']),
       SortCss({
-        sort: 'mobile-first',  // Сортировка CSS по мобильной версии
+        sort: 'mobile-first',
       }),
     ],
   };
