@@ -9,7 +9,8 @@ export default defineConfig(({ command }) => {
     define: {
       [command === 'serve' ? 'global' : '_global']: {},
     },
-    root: 'src',  // root указывает на папку src
+    root: 'src',  // Указываем папку src как корневую для разработки
+    base: '/goit-js-hw-11/', // Добавляем base для размещения на GitHub Pages, где 'repository-name' это имя вашего репозитория
     build: {
       sourcemap: true,
       rollupOptions: {
@@ -34,12 +35,12 @@ export default defineConfig(({ command }) => {
           },
         },
       },
-      outDir: '../dist',  // Папка, в которую будет собираться проект
+      outDir: '../dist',  // Папка, куда будет собираться проект
       emptyOutDir: true,
     },
     server: {
       open: true, // Автоматически открывает браузер при запуске
-      port: 5174, // Укажите порт, на котором будет работать сервер
+      port: 5174, // Порт для локальной разработки
     },
     plugins: [
       injectHTML(),
