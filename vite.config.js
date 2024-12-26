@@ -10,7 +10,7 @@ export default defineConfig(({ command }) => {
       [command === 'serve' ? 'global' : '_global']: {},
     },
     root: 'src',  // Указываем папку src как корневую для разработки
-    base: '/goit-js-hw-11/', // Добавляем base для размещения на GitHub Pages, где 'repository-name' это имя вашего репозитория
+    base: '/https://github.com/obikhov/goit-js-hw-11/', // Добавляем base для размещения на GitHub Pages, где 'repository-name' это имя вашего репозитория
     build: {
       sourcemap: true,
       rollupOptions: {
