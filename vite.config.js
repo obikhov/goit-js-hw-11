@@ -9,7 +9,7 @@ export default defineConfig(({ command }) => {
     define: {
       [command === 'serve' ? 'global' : '_global']: {},
     },
-    root: 'src',
+    root: 'src',  // root указывает на папку src
     build: {
       sourcemap: true,
       rollupOptions: {
@@ -34,12 +34,16 @@ export default defineConfig(({ command }) => {
           },
         },
       },
-      outDir: '../dist',
+      outDir: '../dist',  // Папка, в которую будет собираться проект
       emptyOutDir: true,
+    },
+    server: {
+      open: true, // Автоматически открывает браузер при запуске
+      port: 5174, // Укажите порт, на котором будет работать сервер
     },
     plugins: [
       injectHTML(),
-      FullReload(['./src/**/**.html']),
+      FullReload(['./src/**/*.html']),
       SortCss({
         sort: 'mobile-first',
       }),
