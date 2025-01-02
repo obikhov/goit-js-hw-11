@@ -1,38 +1,23 @@
 import SimpleLightbox from 'simplelightbox';
-import 'simplelightbox/dist/simple-lightbox.min.css';
 
-export function clearGallery(gallery) {
-  gallery.innerHTML = '';
-}
-
-export function renderImages(gallery, images) {
-  if (!Array.isArray(images)) {
-    console.error('renderImages received non-array data');
-    return;
-  }
-
-  const markup = images
-    .map(
-      (image) => `
-        <a href="${image.largeImageURL}" class="gallery-item">
-          <img src="${image.webformatURL}" alt="${image.tags}" />
-        </a>`
-    )
-    .join('');
+export function renderImages(images) {
+  const gallery = document.querySelector('.gallery');
+  const markup = images.map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => `
+    <li class="gallery-item">
+      <a href="${largeImageURL}">
+        <img src="${webformatURL}" alt="${tags}" loading="lazy">
+      </a>
+      <div class="info">
+        <p><b>Likes:</b> ${likes}</p>
+        <p><b>Views:</b> ${views}</p>
+        <p><b>Comments:</b> ${comments}</p>
+        <p><b>Downloads:</b> ${downloads}</p>
+      </div>
+    </li>
+  `).join('');
 
   gallery.insertAdjacentHTML('beforeend', markup);
-
-  const lightbox = new SimpleLightbox('.gallery a');
+  
+  const lightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250 });
   lightbox.refresh();
 }
-
-export function showLoader() {
-  const loader = document.querySelector('.loader');
-  loader.classList.remove('hidden');
-}
-
-export function hideLoader() {
-  const loader = document.querySelector('.loader');
-  loader.classList.add('hidden');
-}
-

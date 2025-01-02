@@ -1,40 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Image Search Gallery</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/iziToast/1.4.0/css/iziToast.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplelightbox@2.4.0/dist/simple-lightbox.min.css" />
-
-  <link rel="stylesheet" href="/goit-js-hw-11/vendor-CWKLx11g.css">
-<script src="/goit-js-hw-11/main-C9TYuMKg.js"></script>
-
-
-  <!-- CSS для iziToast -->
-<link href="https://cdn.jsdelivr.net/npm/izitoast/dist/css/iziToast.min.css" rel="stylesheet">
-<!-- JS для iziToast -->
-<script src="https://cdn.jsdelivr.net/npm/izitoast/dist/js/iziToast.min.js"></script>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Search App</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/iziToast.min.css">
+  <link rel="stylesheet" href="css/simple-lightbox.min.css">
+  <link rel="icon" href="images/favicon.ico">
 </head>
 <body>
-  <h1>Search for Images</h1>
-
-  <!-- Форма поиска -->
-  <form id="search-form">
-    <input type="text" name="query" placeholder="Search for images..." required />
-    <button type="submit">Search</button>
-  </form>
-
-  <!-- Индикатор загрузки -->
-  <div class="loader hidden">Loading...</div>
-
-  <!-- Галерея изображений -->
-  <div class="gallery"></div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/iziToast/1.4.0/js/iziToast.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/simplelightbox@2.4.0/dist/simple-lightbox.min.js"></script>
-  <script type="module" src="main.js"></script>
-
+  <header>
+    <form id="search-form">
+      <input type="text" name="query" placeholder="Search images..." required>
+      <button type="submit">Search</button>
+    </form>
+  </header>
+  <main>
+    <div id="loader" hidden></div>
+    <ul class="gallery"></ul>
+  </main>
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>
