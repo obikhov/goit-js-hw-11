@@ -1,8 +1,11 @@
 import { fetchImages } from './pixabay-api.js';
 import { renderGallery } from './render-functions.js';
 import iziToast from 'izitoast';
+
 import 'izitoast/dist/css/iziToast.min.css';
+
 import 'simplelightbox/dist/simple-lightbox.min.css';
+
 
 const form = document.querySelector('#search-form');
 const gallery = document.querySelector('#gallery');
