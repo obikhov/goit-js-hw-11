@@ -4,22 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Image Search App</title>
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/iziToast.min.css">
-  <link rel="stylesheet" href="css/simple-lightbox.min.css">
-  <link rel="icon" href="images/favicon.ico">
+  <link rel="stylesheet" href="/src/css/styles.css">
+  <link rel="stylesheet" href="/src/css/iziToast.min.css">
+  <link rel="stylesheet" href="/src/css/simple-lightbox.min.css">
+  <link rel="icon" href="/src/images/favicon.ico" type="image/x-icon">
 </head>
 <body>
   <header>
     <form id="search-form">
-      <input type="text" name="query" placeholder="Search images..." required>
+      <input type="text" name="query" autocomplete="off" placeholder="Search images..." />
       <button type="submit">Search</button>
     </form>
   </header>
   <main>
-    <div id="loader" hidden></div>
-    <ul class="gallery"></ul>
+    <div id="loader" class="hidden"></div>
+    <ul id="gallery"></ul>
   </main>
-  <script type="module" src="js/main.js"></script>
+  <script type="module" src="/js/main.js"></script>
 </body>
 </html>

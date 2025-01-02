@@ -1,36 +1,35 @@
 import { fetchImages } from './pixabay-api.js';
-import { renderImages } from './render-functions.js';
-import { showLoader, hideLoader } from './loader.js';
+import { renderGallery } from './render-functions.js';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
-const form = document.getElementById('search-form');
-const gallery = document.querySelector('.gallery');
+const form = document.querySelector('#search-form');
+const gallery = document.querySelector('#gallery');
+const loader = document.querySelector('#loader');
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
-  const query = event.target.elements.query.value.trim();
-
+  const query = event.target.query.value.trim();
   if (!query) {
     iziToast.error({ title: 'Error', message: 'Please enter a search term!' });
     return;
   }
 
   gallery.innerHTML = '';
-  showLoader();
+  loader.classList.remove('hidden');
 
   try {
-    const { hits, totalHits } = await fetchImages(query);
-
-    if (hits.length === 0) {
-      iziToast.warning({ title: 'No results', message: 'No images found. Try another query!' });
+    const images = await fetchImages(query);
+    if (images.length === 0) {
+      iziToast.info({ title: 'Info', message: 'No images found. Try another search term.' });
     } else {
-      renderImages(hits);
-      iziToast.success({ title: 'Success', message: `Found ${totalHits} images!` });
+      renderGallery(images);
     }
   } catch (error) {
-    iziToast.error({ title: 'Error', message: error.message });
+    iziToast.error({ title: 'Error', message: 'Failed to load images.' });
   } finally {
-    hideLoader();
+    loader.classList.add('hidden');
   }
 });
+
