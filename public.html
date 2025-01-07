@@ -3,25 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Image Search App</title>
-  <link rel="stylesheet" href="/src/css/styles.css">
-  <link rel="stylesheet" href="/src/css/iziToast.min.css">
-  <link rel="stylesheet" href="/src/css/simple-lightbox.min.css">
-  <link rel="icon" href="/src/images/favicon.ico" type="image/x-icon">
-  <script type="module" crossorigin src="/goit-js-hw-11/assets/vendor-9HSCcmtn.js"></script>
-  <script type="module" crossorigin src="/goit-js-hw-11/assets/main-BJlQpEC3.js"></script>
-  <link rel="stylesheet" crossorigin href="/goit-js-hw-11/assets/vendor-DumFYO8Z.css">
+  <title>Image Search</title>
+  <script type="module" crossorigin src="/goit-js-hw-11/assets/vendor-BrddEoy-.js"></script>
+  <script type="module" crossorigin src="/goit-js-hw-11/assets/main-8iTplxuY.js"></script>
+  <link rel="stylesheet" crossorigin href="/goit-js-hw-11/assets/vendor-CWKLx11g.css">
+  <link rel="stylesheet" crossorigin href="/goit-js-hw-11/assets/main-DvPDDfy5.css">
 </head>
 <body>
   <header>
-    <form id="search-form">
-      <input type="text" name="query" autocomplete="off" placeholder="Search images..." />
+    <form id="search-form" class="search-form">
+      <input
+        type="text"
+        name="searchQuery"
+        autocomplete="off"
+        placeholder="Search images..."
+      />
       <button type="submit">Search</button>
     </form>
   </header>
+
   <main>
-    <div id="loader" class="hidden"></div>
-    <ul id="gallery"></ul>
+    <section class="gallery"></section>
+    <div class="loader"></div>
   </main>
+
 </body>
 </html>
