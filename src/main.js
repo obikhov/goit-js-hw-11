@@ -2,6 +2,9 @@ import { fetchImages } from './js/pixabay-api';
 import { createImageMarkup, clearGallery } from './js/render-functions';
 import SimpleLightbox from 'simplelightbox';
 import iziToast from 'izitoast';
+import './css/styles.css';
+import './css/iziToast.min.css';
+import './css/simple-lightbox.min.css';
 
 
 
