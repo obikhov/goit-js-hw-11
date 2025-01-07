@@ -1,0 +1,11 @@
+import{S as p,i as n}from"./vendor-De63neY_.js";(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))s(e);new MutationObserver(e=>{for(const r of e)if(r.type==="childList")for(const i of r.addedNodes)i.tagName==="LINK"&&i.rel==="modulepreload"&&s(i)}).observe(document,{childList:!0,subtree:!0});function a(e){const r={};return e.integrity&&(r.integrity=e.integrity),e.referrerPolicy&&(r.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?r.credentials="include":e.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function s(e){if(e.ep)return;e.ep=!0;const r=a(e);fetch(e.href,r)}})();const d="47470900-b8e0eef515806370832377144npm run build",g="https://pixabay.com/api/";async function y(o,t=1,a=40){const s=new URLSearchParams({key:d,q:o,image_type:"photo",orientation:"horizontal",safesearch:!0,page:t,per_page:a}),e=await fetch(`${g}?${s}`);if(!e.ok)throw new Error("Failed to fetch images");return await e.json()}function h(o){return o.map(({webformatURL:t,largeImageURL:a,tags:s,likes:e,views:r,comments:i,downloads:m})=>`
+      <a href="${a}" class="gallery__item">
+        <img src="${t}" alt="${s}" loading="lazy" />
+        <div class="info">
+          <p><b>Likes:</b> ${e}</p>
+          <p><b>Views:</b> ${r}</p>
+          <p><b>Comments:</b> ${i}</p>
+          <p><b>Downloads:</b> ${m}</p>
+        </div>
+      </a>`).join("")}function b(o){o.innerHTML=""}const L=document.querySelector("#search-form"),l=document.querySelector(".gallery"),u=document.querySelector(".loader");let c="",f=1;const w=40,v=new p(".gallery a");L.addEventListener("submit",async o=>{if(o.preventDefault(),c=o.target.elements.searchQuery.value.trim(),!c){n.warning({title:"Warning",message:"Enter a search term"});return}f=1,b(l);try{u.classList.add("visible");const t=await y(c,f,w);if(t.hits.length===0){n.error({title:"Error",message:"Sorry, no images match your query. Try again!"});return}l.innerHTML=h(t.hits),v.refresh()}catch(t){n.error({title:"Error",message:t.message})}finally{u.classList.remove("visible")}});
+//# sourceMappingURL=main-niU4Hrx9.js.map
