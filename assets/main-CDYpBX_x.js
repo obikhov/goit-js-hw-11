@@ -8,4 +8,4 @@ import{S as p,i as n}from"./vendor-De63neY_.js";(function(){const t=document.cre
           <p><b>Downloads:</b> ${m}</p>
         </div>
       </a>`).join("")}function b(o){o.innerHTML=""}const L=document.querySelector("#search-form"),l=document.querySelector(".gallery"),u=document.querySelector(".loader");let c="",f=1;const w=40,v=new p(".gallery a");L.addEventListener("submit",async o=>{if(o.preventDefault(),c=o.target.elements.searchQuery.value.trim(),!c){n.warning({title:"Warning",message:"Enter a search term"});return}f=1,b(l);try{u.classList.add("visible");const t=await y(c,f,w);if(t.hits.length===0){n.error({title:"Error",message:"Sorry, no images match your query. Try again!"});return}l.innerHTML=h(t.hits),v.refresh()}catch(t){n.error({title:"Error",message:t.message})}finally{u.classList.remove("visible")}});
-//# sourceMappingURL=main-CDdCoT3X.js.map
+//# sourceMappingURL=main-CDYpBX_x.js.map
