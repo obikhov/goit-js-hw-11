@@ -16,3 +16,35 @@
 @import url('./badges.css');
 @import url('./back-link.css');
 @import url('./footer.css');
+
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.search-bar {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.gallery {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.gallery-item img {
+  width: 100%;
+  display: block;
+}
+
+.info {
+  text-align: center;
+  margin-top: 8px;
+}
